@@ -1,4 +1,4 @@
-# PSB2 Sampling Library
+# PSB2 - Clojure Sampling Library
 
 A Clojure library for fetching and sampling training and test data for experimenting with the program synthesis dataset PSB2. In order to use this library, you need to have [the PSB2 datasets downloaded from Zenodo](https://zenodo.org/record/4678739).
 
