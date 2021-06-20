@@ -1,3 +1,5 @@
+[![Clojars Project](https://img.shields.io/clojars/v/net.clojars.schneau/psb2.svg)](https://clojars.org/net.clojars.schneau/psb2)
+
 # PSB2 - Clojure Sampling Library
 
 A Clojure library for fetching and sampling training and test data for experimenting with the program synthesis dataset PSB2. In order to use this library, you need to have [the PSB2 datasets downloaded from Zenodo](https://zenodo.org/record/4678739).
@@ -7,7 +9,13 @@ A Clojure library for fetching and sampling training and test data for experimen
 Add the following to your `:dependencies`:
 
 ```clojure
-[psb2 "1.0.0"]
+[net.clojars.schneau/psb2 "1.0.0"]
+```
+
+Then, add the following to your namespace:
+
+```clojure
+(:require [psb2.core :as psb2])
 ```
 
 ## Usage
