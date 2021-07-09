@@ -12,3 +12,4 @@ pom.xml.asc
 .hg/
 .calva
 .lsp
+HOW_TO_DEPLOY.md
