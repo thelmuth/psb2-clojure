@@ -13,3 +13,4 @@ pom.xml.asc
 .calva
 .lsp
 HOW_TO_DEPLOY.md
+.clj-kondo/
