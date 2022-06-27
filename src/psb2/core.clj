@@ -28,6 +28,36 @@
                 "twitter"
                 "vector-distance"))
 
+(def psb1-problems '("checksum"
+                     "collatz-numbers"
+                     "compare-string-lengths"
+                     "count-odds"
+                     "digits"
+                     "double-letters"
+                     "even-squares"
+                     "for-loop-index"
+                     "grade"
+                     "last-index-of-zero"
+                     "median"
+                     "mirror-image"
+                     "negative-to-zero"
+                     "number-io"
+                     "pig-latin"
+                     "replace-space-with-newline"
+                     "scrabble-score"
+                     "small-or-large"
+                     "smallest"
+                     "string-differences"
+                     "string-lengths-backwards"
+                     "sum-of-squares"
+                     "super-anagrams"
+                     "syllables"
+                     "vector-average"
+                     "vectors-summed"
+                     "wallis-pi"
+                     "word-stats"
+                     "x-word-lines"))
+
 (defn save-file-from-uri
   "Saves a file given a particular URI.
    Taken from here: https://stackoverflow.com/a/19297746/2023312"
@@ -58,15 +88,20 @@
     2. If not, downloads the dataset file to the specified location.
     3. Loads and returns list of the data from the dataset file."
   [datasets-directory problem-name edge-or-random]
-  (let [directory (io/file datasets-directory "datasets" problem-name)
-        file (io/file directory (str problem-name "-" edge-or-random ".edn"))]
+  (let [problem-name (name problem-name) ; Make this work with keywords
+        directory (io/file datasets-directory "datasets" problem-name)
+        file (io/file directory (str problem-name "-" edge-or-random ".edn"))
+        psbN (cond
+               (some #{problem-name} problems) "PSB2"
+               (some #{problem-name} psb1-problems) "PSB1"
+               :else (throw (str "Unrecognized problem: " problem-name)))]
     ; Make directory if it doesn't exist
     (when (not (.exists directory))
       (.mkdirs directory))
     ; Download file from S3 if it doesn't exist
     (when (not (.exists file))
-      (let [uri (format "https://psb2-datasets.s3.amazonaws.com/PSB2/datasets/%s/%s-%s.edn"
-                        problem-name problem-name edge-or-random)]
+      (let [uri (format "https://psb2-datasets.s3.amazonaws.com/%s/datasets/%s/%s-%s.edn"
+                        psbN problem-name problem-name edge-or-random)]
         (save-file-from-uri uri file)))
     ; Load file
     (load-edn-lines file)))
