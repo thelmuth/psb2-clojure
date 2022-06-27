@@ -4,12 +4,14 @@
 
 A Clojure library for fetching and sampling training and test data for experimenting with the program synthesis dataset PSB2. The library will automatically download datasets to the given location, and will cache them to avoid repeated downloads.
 
+Note: the library now works with all PSB1 datasets as well. Nothing to change besides using a PSB1 problem name.
+
 ## Installation
 
 Add the following to your `:dependencies`:
 
 ```clojure
-[net.clojars.schneau/psb2 "1.1.0"]
+[net.clojars.schneau/psb2 "1.1.1"]
 ```
 
 Then, add the following to your namespace:
